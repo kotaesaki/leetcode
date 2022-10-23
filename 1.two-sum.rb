@@ -13,9 +13,9 @@ def two_sum(nums, target)
 
     memo = {}
     nums.each_with_index do |num, i|
-        reminder = target - num 
-        return [memo[reminder], i] if memo[reminder]
-        memo[num] = i
+      reminder = target - num 
+      return [memo[reminder], i] if memo[reminder]
+      memo[num] = i
     end
 end
 # @lc code=end
