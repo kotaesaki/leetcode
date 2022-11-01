@@ -17,16 +17,18 @@
 # @param {ListNode} list2
 # @return {ListNode}
 def merge_two_lists(list1, list2)
-  result = list1
+  result = ListNode.new
 
   current = list2
-  target = result
+  target = list1
 
-  until current.nil?
+  while result.nil?
     if current.val <= target.val
+      result.val = target.val
       result.next = current
       current = current.next
     else
+      result.val = current.val
       result.next = target
       target = target.next
     end
