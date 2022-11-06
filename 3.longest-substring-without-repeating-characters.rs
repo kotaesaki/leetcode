@@ -23,7 +23,7 @@ impl Solution {
             // }
         }
         // vec.len()
-        2
+        3
     }
 }
 // @lc code=end
