@@ -1,7 +1,5 @@
 package main
 
-import "math"
-
 /*
  * @lc app=leetcode id=231 lang=golang
  *
@@ -10,27 +8,18 @@ import "math"
 
 // @lc code=start
 func isPowerOfTwo(n int) bool {
-	if n == 0 {
+	if n <= 0 {
 		return false
 	}
 	if n == 1 {
 		return true
 	}
-
-	var value float64
-	i := float64(0)
-	if n > 1 {
-		for float64(n) <= value {
-			value = math.Pow(2, i)
-			i++
-		}
-		return float64(n) == value
+	if n%2 == 1 {
+		return false
 	}
-	for float64(n) <= value {
-		value = math.Pow(2, i)
-		i--
-	}
-	return float64(n) == value
+	n = n / 2
+	res := isPowerOfTwo(n)
+	return res
 }
 
 // @lc code=end
