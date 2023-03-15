@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 /*
  * @lc app=leetcode id=257 lang=golang
  *
@@ -34,6 +36,26 @@ func binaryTreePaths(root *TreeNode) []string {
 	// 	}
 	// }
 	// return hoge()
+
+	return binaryTreePathsWithString(root, "")
+}
+
+func binaryTreePathsWithString(node *TreeNode, str string) []string {
+	if node == nil {
+		return []string{}
+	}
+
+	if node.Left == nil && node.Right == nil {
+		str += fmt.Sprint(node.Val)
+		return []string{str}
+	}
+
+	str += fmt.Sprintf("%v->", node.Val)
+
+	return append(
+		binaryTreePathsWithString(node.Left, str),
+		binaryTreePathsWithString(node.Right, str)...,
+	)
 }
 
 // @lc code=end
