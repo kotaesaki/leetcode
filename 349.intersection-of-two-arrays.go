@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 /*
  * @lc app=leetcode id=349 lang=golang
  *
@@ -22,7 +20,6 @@ func intersection(nums1 []int, nums2 []int) []int {
 	}
 
 	for i := 0; i < len(short_nums); i++ {
-		fmt.Println(count(long_nums, short_nums[i]))
 		if count(&long_nums, short_nums[i]) {
 			output = append(output, short_nums[i])
 		} else {
@@ -34,13 +31,14 @@ func intersection(nums1 []int, nums2 []int) []int {
 
 func count(nums *[]int, target_num int) bool {
 	is_existed := false
-	for _, num := range *nums {
-		if num == target_num {
+	for i := 0; i < len(*nums); i++ {
+		if (*nums)[i] == target_num {
 			is_existed = true
-			*nums = append(*nums)
+			*nums = append((*nums)[:i], (*nums)[i+1:]...)
+			i--
 		}
 	}
-	return false
+	return is_existed
 }
 
 // @lc code=end
