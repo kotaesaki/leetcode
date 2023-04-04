@@ -10,14 +10,14 @@ package main
 func canConstruct(ransomNote string, magazine string) bool {
 	abc_list := make(map[rune]int, 26)
 	for _, c := range magazine {
-		abc_list[c] += 1
+		abc_list[c]++
 	}
 
 	for _, c := range ransomNote {
-		abc_list[c] -= 1
-		if abc_list[c] < 0 {
+		if abc_list[c] == 0 {
 			return false
 		}
+		abc_list[c]--
 	}
 	return true
 }
