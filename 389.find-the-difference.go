@@ -11,10 +11,10 @@ func findTheDifference(s string, t string) byte {
 	// char_list := make([]int, 26)
 	for i, _ := range t {
 		if s[i:i+1] != t[i:i+1] {
-			return i
+			return byte(i)
 		}
 	}
-	return -1
+
 }
 
 // @lc code=end
