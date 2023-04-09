@@ -8,13 +8,18 @@ package main
 
 // @lc code=start
 func findTheDifference(s string, t string) byte {
-	// char_list := make([]int, 26)
-	for i, _ := range t {
-		if s[i:i+1] != t[i:i+1] {
-			return byte(i)
-		}
+	char_list := make([]int, 26)
+	for _, r := range s {
+		char_list[r-97]++
 	}
 
+	for _, r := range t {
+		if char_list[r-97] == 0 {
+			return byte(r)
+		}
+		char_list[r-97]--
+	}
+	panic("Error")
 }
 
 // @lc code=end
