@@ -1,10 +1,5 @@
 package main
 
-import (
-	"fmt"
-	"sort"
-)
-
 /*
  * @lc app=leetcode id=409 lang=golang
  *
@@ -13,25 +8,37 @@ import (
 
 // @lc code=start
 func longestPalindrome(s string) int {
-	char_list := make(map[string]int, 26)
-	first_char := ""
+	char_list := make(map[string]int, 52)
 	for _, r := range s {
-		if first_char == "" {
-			first_char = string(r)
-		}
 		char_list[string(r)]++
-		if char_list[string(r)] > char_list[first_char] {
+	}
 
+	num := 0
+	for index, i := range char_list {
+		if i == 0 || i == 1 {
+			continue
+		}
+		target := 0
+		if i%2 == 0 {
+			target = i
+		} else {
+			target = i - 1
+		}
+
+		num += target
+		char_list[index] -= target
+	}
+
+	for _, i := range char_list {
+		if i == 0 {
+			continue
+		}
+		if i == 1 {
+			num++
+			return num
 		}
 	}
-	sort.Slice(char_list, func(i, j int) bool {
-		return char_list[i][1].(int) < char_list[j][1].int
-	})
-	fmt.Println(char_list)
-
-	// return 1
-	// for c,  := range char_list {
-	// }
+	return num
 }
 
 // @lc code=end
