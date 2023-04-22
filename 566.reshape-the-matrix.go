@@ -18,7 +18,6 @@ func matrixReshape(mat [][]int, r int, c int) [][]int {
 		length += len(v)
 	}
 
-	i := 0
 	var target int
 	if length < r {
 		target = c
@@ -26,7 +25,7 @@ func matrixReshape(mat [][]int, r int, c int) [][]int {
 		target = r
 	}
 	output := make([][]int, target)
-
+	i := 0
 	for _, v := range mat {
 		for _, v2 := range v {
 			if len(output[i]) == length/target {
