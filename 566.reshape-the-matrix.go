@@ -8,30 +8,33 @@ package main
 
 // @lc code=start
 func matrixReshape(mat [][]int, r int, c int) [][]int {
-	output := make([][]int, r)
+	m, n := len(mat), len(mat[0])
+	if m*n != r*c {
+		return mat
+	}
+
 	length := 0
 	for _, v := range mat {
 		length += len(v)
 	}
 
-	for i, v := range mat {
+	i := 0
+	var target int
+	if length < r {
+		target = c
+	} else {
+		target = r
+	}
+	output := make([][]int, target)
 
+	for _, v := range mat {
 		for _, v2 := range v {
-			if output[i] == 
-
+			if len(output[i]) == length/target {
+				i++
+			}
+			output[i] = append(output[i], v2)
 		}
 	}
-	// for i := 0; i < r; i++ {
-
-	// 	// for _, arr := range mat {
-	// 	// 	for _, v := range arr {
-	// 	// 		if len(output[i]) < length {
-	// 	// 			output[i] = append(output[i], v)
-	// 	// 		}
-	// 	// 	}
-
-	// 	}
-	// }
 	return output
 }
 
