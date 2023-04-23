@@ -14,20 +14,10 @@ func findLHS(nums []int) int {
 	}
 	length := 0
 	for k, v := range slice {
-		if slice[k-1]+slice[k+1] == 0 {
+		if slice[k+1] == 0 || v+slice[k+1] <= length {
 			continue
 		}
-		var sub_length int
-		if slice[k-1] > slice[k+1] {
-			sub_length = slice[k-1]
-		} else {
-			sub_length = slice[k+1]
-		}
-
-		if v+sub_length <= length {
-			continue
-		}
-		length = v + sub_length
+		length = v + slice[k+1]
 	}
 	return length
 }
