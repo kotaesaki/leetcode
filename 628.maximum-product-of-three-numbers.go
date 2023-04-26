@@ -1,6 +1,8 @@
 package main
 
-import "sort"
+import (
+	"sort"
+)
 
 /*
  * @lc app=leetcode id=628 lang=golang
@@ -10,29 +12,18 @@ import "sort"
 
 // @lc code=start
 
-type Nums struct {
-	num        int
-	isPositive bool
-}
-
 func maximumProduct(nums []int) int {
-	if len(nums) == 3 {
-		return nums[0] * nums[1] * nums[2]
+	// 配列を昇順にソートする
+	sort.Ints(nums)
+	n := len(nums)
+	// 最大値は、最後の3つの要素の積、または最初の2つの要素と最後の1つの要素の積のうち大きい方
+	return max(nums[n-1]*nums[n-2]*nums[n-3], nums[0]*nums[1]*nums[n-1])
+}
+func max(a, b int) int {
+	if a > b {
+		return a
 	}
-
-	sortNums := make([]Nums, len(nums))
-	for _, num := range nums {
-		if num >= 0 {
-			sortNums = append(sortNums, Nums{num: num, isPositive: true})
-		} else {
-			sortNums = append(sortNums, Nums{num: num * -1, isPositive: false})
-		}
-	}
-	sort.Slice(sortNums, func(i, j int) bool {
-		return sortNums[i].num > sortNums[j].num
-	})
-
-	sortNums[0].isPositive == true
+	return b
 }
 
 // @lc code=end
