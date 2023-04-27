@@ -8,19 +8,18 @@ package main
 
 // @lc code=start
 func findMaxAverage(nums []int, k int) float64 {
-	total := -100000.0
-	length := float64(k)
+	var total *float64 = nil
+
 	for i := 0; i < len(nums)-(k-1); i++ {
 		avg := 0.0
-		for j := 0; float64(j) < length; j++ {
+		for j := 0; j < k; j++ {
 			avg += float64(nums[i+j])
 		}
-		avg /= length
-		if total < avg {
-			total = avg
+		if total == nil || *total < avg {
+			total = &avg
 		}
 	}
-	return float64(total)
+	return *total / float64(k)
 }
 
 // @lc code=end
