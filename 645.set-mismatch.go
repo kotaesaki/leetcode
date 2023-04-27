@@ -14,6 +14,9 @@ func findErrorNums(nums []int) []int {
 	}
 	var dup, missing int
 	for v := 1; v < len(nums)+1; v++ {
+		if dup != 0 && missing != 0 {
+			break
+		}
 		if hash[v] == 0 {
 			missing = v
 			continue
