@@ -8,7 +8,7 @@ package main
 
 // @lc code=start
 func judgeCircle(moves string) bool {
-
+	return true
 }
 
 // @lc code=end
