@@ -8,6 +8,7 @@ package main
 
 // @lc code=start
 func judgeCircle(moves string) bool {
+	// WIP: 明日やる
 	return true
 }
 
