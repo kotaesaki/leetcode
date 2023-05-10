@@ -22,9 +22,8 @@ func calPoints(operations []string) int {
 		} else if ops == string('D') {
 			result = append(result, result[len(result)-1]*2)
 		} else {
-			if value, err := strconv.Atoi(ops); err == nil {
-				result = append(result, value)
-			}
+			value, _ := strconv.Atoi(ops)
+			result = append(result, value)
 		}
 	}
 	var answer int
