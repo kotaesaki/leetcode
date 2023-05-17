@@ -8,10 +8,6 @@
 # @param {Integer[]} cost
 # @return {Integer}
 def min_cost_climbing_stairs(cost)
-  calculate(cost)
-end
-
-def calculate(cost)
   dp = []
   cost.each_with_index do |c, index|
     next dp << c if [0, 1].include?(index)
