@@ -9,11 +9,7 @@
 # @param {String} stones
 # @return {Integer}
 def num_jewels_in_stones(jewels, stones)
-  result = 0
-  stones.each_char do |stone|
-    result += 1 if jewels.include?(stone)
-  end
-  result
+  stones.chars.count { |stone| jewels.include?(stone) }
 end
 # @lc code=end
 
