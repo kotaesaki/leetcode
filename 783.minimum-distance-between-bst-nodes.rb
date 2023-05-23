@@ -17,25 +17,21 @@
 # @param {TreeNode} root
 # @return {Integer}
 def min_diff_in_bst(root)
-  arr = []
-  add_arr(root, arr)
-  result = 100000000
-  arr.sort!.reverse![1..].each_with_index do |num, i|
-    # puts "result: #{result}"
-    # puts "arr[i-1] - num: #{arr[i] - num}"
-    result = arr[i] - num if (arr[i] - num) < result
-    return 0 if result <= 0
-  end
-  result
+  hoge(root)
+
 end
 
-def add_arr(root, arr)
-  while root
-    arr << root.val
-    add_arr(root.left, arr)
-    add_arr(root.right, arr)
-    root = nil
+def hoge(root)
+  return if root == nil
+
+  hoge(root.left)
+
+  if prev_value != nil
+    min_distance = [min_distance, root.val - prev_value.val].min
   end
+  prev_value = root.val
+
+  hoge(root.right)
 end
 # @lc code=end
 
