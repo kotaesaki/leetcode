@@ -13,8 +13,7 @@ def shortest_to_char(s, c)
   targets = arr.map.each_with_index { |char, index| index if char == c }
   targets.compact!
   arr.map.each_with_index do |char, i| 
-    diff = []
-    targets.each { |target| diff << (i < target ? target - i : i - target) }
+    diff = targets.map { |t| i < t ? t - i : i - t }
     diff.min
   end
 end
