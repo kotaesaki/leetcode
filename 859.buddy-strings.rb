@@ -9,20 +9,22 @@
 # @param {String} goal
 # @return {Boolean}
 def buddy_strings(s, goal)
-  return false if s.length != goal.length
-  
-  # Find the indices of the characters that are different in s and goal
-  diff_indices = []
-  s.chars.each_with_index do |char, i|
-    diff_indices << i if char != goal[i]
+  return false if s.size != goal.size
+  return false if s.size < 2
+  h = {}
+  ans = []
+  duplicates = false
+  s.chars.each_with_index do |v, i|
+    duplicates = true if h[v]
+    h[v] = true
+
+    return false if ans.size > 2
+    ans << i if v != goal[i]
   end
-  
-  # If there are more than two different characters, we can't swap them to get the goal string
-  return false if diff_indices.length != 2
-  
-  # Check if swapping the characters at the two different indices in s results in the goal string
-  s[diff_indices[0]], s[diff_indices[1]] = s[diff_indices[1]], s[diff_indices[0]]
-  s == goal
+  return duplicates if ans.empty?
+  return false if ans.size != 2
+  i, j = ans
+  return s[i] == goal[j] && s[j] == goal[i]
 end
 # @lc code=end
 
