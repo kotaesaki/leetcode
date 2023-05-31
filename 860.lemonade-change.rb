@@ -8,7 +8,7 @@
 # @param {Integer[]} bills
 # @return {Boolean}
 def lemonade_change(bills)
-  h = {5 => 0, 10 => 0, 20 => 0}
+  h = {5 => 0, 10 => 0}
   bills.each do |bill|
     case bill
     when 5
@@ -21,10 +21,8 @@ def lemonade_change(bills)
       if h[10] >= 1 && h[5] >= 1 
         h[5] -= 1
         h[10] -= 1
-        h[20] += 1
       elsif h[5] >= 3
         h[5] -= 3
-        h[20] += 1
       else
         return false
       end
