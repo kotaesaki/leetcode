@@ -9,8 +9,6 @@
 # @param {String} typed
 # @return {Boolean}
 def is_long_pressed_name(name, typed)
-  return false if name.length > typed.length
-
   index = 0
   prev, curernt = nil, name[index]
   typed.chars.each do |c|
