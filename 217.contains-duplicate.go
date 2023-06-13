@@ -10,9 +10,13 @@ package main
 func containsDuplicate(nums []int) bool {
 	a := make(map[int]bool)
 	for _, n := range nums {
-		a[n] = true
+		if _, ok := a[n]; !ok {
+			a[n] = true
+		} else {
+			return true
+		}
 	}
-	return len(a) != len(nums)
+	return false
 }
 
 // @lc code=end
