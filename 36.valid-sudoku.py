@@ -12,5 +12,6 @@ class Solution(object):
         :rtype: bool
         """
         
+        
 # @lc code=end
 
