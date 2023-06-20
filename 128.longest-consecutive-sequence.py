@@ -7,18 +7,16 @@
 # @lc code=start
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
-      res = 0
-      current = []
-      for n in sorted(set(nums)):
-        if (len(current) != 0 
-            and n != current[-1] + 1 
-            and res < len(current)):
-          print(n)
-          res = len(current)
-          current = []
-        current.append(n)
-      if res < len(current):
-        res = len(current)
-      return res
+      numSet =  set(nums)
+      longest = 0
+
+      for n in nums:
+        if n - 1 not in numSet:
+          length = 0
+          while (n + length) in numSet:
+            length += 1
+          longest = max(length, longest)
+      return longest
+
 # @lc code=end
 
